@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #welcomeBanner {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .highlight {
+            font-size: 1.2em;
+            color: yellow;
+        }
+        #gallery {
+            margin: 20px;
+        }
+        #galleryImage{
+            width: 200px;
+            height: 150px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        nav {
+            background-color: #dde3e4;
+            padding: 10px;
+        }
+        table {
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        form {
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid gray;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 2px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        output {
+            color: green;
+            font-weight: bold;
+        }
+        #eventImage {
+            width: 250px;
+            border: 3px solid white;
+            transition: 0.3s;
+        }
+
+        #feeDisplay {
+            color: blue;
+            font-weight: bold;
+        }
+
+        #charCount {
+            color: green;
+            font-weight: bold;
+        }
+
+        #savedMessage {
+            color: blue;
+            font-weight: bold;
+        }
+
+        #locationResult {
+            color: blue;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+     <nav>
+        <a href="#home">Home</a> |
+        <a href="#events">Events</a> |
+        <a href="#contact">Contact</a> |
+        <a href="help.html" target="_blank">Help</a>
+     </nav>
+     <!-- Main Content -->
+     <main>
+
+        <!-- Welcome Banner -->
+        <div id="welcomeBanner">
+            <h2>Welcome Back User!</h2>
+            <p class="highlight">
+                You have successfully logged in.
+            </p>
+            <p>
+                Special Offer:
+                <span style="color:red; font-weight:bold;">
+                    Free entry for first 50 registrations!
+                </span>
+            </p>
+        </div>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h1 style="color:red;">
+                Welcome to Community Portal
+            </h1>
+        </section>
+        
+        <hr>
+
+        <!-- Image Gallery Section -->
+        <section id="gallery">
+            <table>
+                <caption>Past Community Events</caption>
+                <tr>
+                    <td>
+                        <img src="https://picsum.photos/200/150?1"
+                            alt="Music Event"
+                            title="Music Festival"
+                            class="galleryImage">
+                        <p><b>Music Festival</b></p>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/200/150?2"
+                            alt="Food Event"
+                            title="Food Carnival"
+                            class="galleryImage">
+                        <p><b>Food Carnival</b></p>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/200/150?3"
+                            alt="Sports Event"
+                            title="Sports Meet"
+                            class="galleryImage">
+                        <p><b>Sports Meet</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://picsum.photos/200/150?4"
+                            alt="Dance Event"
+                            title="Dance Competition"
+                            class="galleryImage">
+                        <p><b>Dance Competition</b></p>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/200/150?5"
+                            alt="Book Fair"
+                            title="Book Fair"
+                            class="galleryImage">
+                        <p><b>Book Fair</b></p>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/200/150?6"
+                            alt="Art Exhibition"
+                            title="Art Exhibition"
+                            class="galleryImage">
+                        <p><b>Art Exhibition</b></p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <hr>
+        
+        <!-- Events Section -->
+        <section id="events">
+            <h1>Events</h1>
+        </section>
+        
+        <hr>
+
+        <!-- Registration Form Section -->
+
+        <section id="registration">
+
+            <h2 style="text-align: center;">Event Registration Form</h2>
+
+            <form onsubmit="showMessage(); return false;">
+
+                <!-- Name -->
+
+                <label>Full Name:</label>
+
+                <input type="text"
+                    placeholder="Enter your full name"
+                    required
+                    autofocus>
+
+                <!-- Email -->
+
+                <label>Email:</label>
+
+                <input type="email"
+                    placeholder="Enter your email"
+                    required>
+
+                <!-- Date -->
+
+                <label>Event Date:</label>
+
+                <input type="date"
+                    required>
+
+                <!-- Event Type -->
+
+                <label>Select Event Type:</label>
+
+                <select required>
+
+                    <option value="">Choose Event</option>
+                    <option>Music</option>
+                    <option>Food</option>
+                    <option>Sports</option>
+
+                </select>
+
+                <!-- Message -->
+
+                <label>Message:</label>
+
+                <textarea rows="5"
+                        placeholder="Enter additional comments"></textarea>
+
+                <!-- Submit -->
+
+                <button type="submit">
+                    Register Event
+                </button>
+
+                <br><br>
+
+                <!-- Output Message -->
+
+                <output id="result"></output>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Feedback Section -->
+
+        <section id="feedback">
+
+            <h2>Event Feedback</h2>
+
+            <!-- Phone Validation -->
+
+            <label>Phone Number:</label>
+
+            <input type="text"
+                id="phone"
+                placeholder="Enter 10 digit number"
+                onblur="validatePhone()">
+
+            <p id="phoneMessage"></p>
+
+            <br>
+
+            <!-- Event Fee -->
+
+            <label>Select Event:</label>
+
+            <select onchange="showFee(this.value)">
+
+                <option value="">Choose Event</option>
+                <option value="100">Music Event</option>
+                <option value="200">Food Event</option>
+                <option value="300">Sports Event</option>
+
+            </select>
+
+            <p id="feeDisplay"></p>
+
+            <br>
+
+            <!-- Double Click Image -->
+
+            <img src="https://picsum.photos/250/150"
+                id="eventImage"
+                ondblclick="enlargeImage()">
+
+            <p>Double click image to enlarge</p>
+
+            <br>
+
+            <!-- Feedback Textarea -->
+
+            <textarea id="feedbackText"
+                    rows="5"
+                    cols="40"
+                    placeholder="Enter feedback"
+                    onkeyup="countCharacters()"></textarea>
+
+            <p id="charCount">Characters: 0</p>
+
+            <br>
+
+            <!-- Submit Button -->
+
+            <button onclick="showConfirmation()">
+                Submit Feedback
+            </button>
+
+        </section>
+
+        <hr>
+
+        <!-- Video Invite Section -->
+
+        <section id="videoInvite">
+
+            <h2>Community Event Promo</h2>
+
+            <video width="500"
+                controls
+                oncanplay="videoReady()" style="border-radius: 10px;">
+
+                <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4">
+
+                Your browser does not support video.
+
+            </video>
+
+            <p id="videoMessage"></p>
+
+        </section>
+
+        <hr>
+
+        <!-- User Preferences Section -->
+
+        <section id="preferences">
+
+            <h2>Save Your Preferred Event</h2>
+
+            <label>Select Preferred Event:</label>
+
+            <select id="preferredEvent"
+                    onchange="savePreference()">
+
+                <option value="">Choose Event</option>
+
+                <option value="Music">Music</option>
+
+                <option value="Food">Food</option>
+
+                <option value="Sports">Sports</option>
+
+            </select>
+
+            <p id="savedMessage"></p>
+
+            <br>
+
+            <button onclick="clearPreferences()">
+                Clear Preferences
+            </button>
+
+        </section>
+
+        <hr>
+
+        <!-- Geolocation Section -->
+
+        <section id="location">
+
+            <h2>Find Nearby Events</h2>
+
+            <button onclick="findLocation()">
+                Find Nearby Events
+            </button>
+
+            <p id="locationResult"></p>
+
+        </section>
+
+        <hr>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h1>Contact</h1>
+        </section>
+     
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+    
+    <script>
+
+        function showMessage() {
+
+            document.getElementById("result").innerHTML =
+                "Registration Successful!";
+
+        }
+
+        // Phone Validation
+
+        function validatePhone() {
+
+            let phone =
+                document.getElementById("phone").value;
+
+            if(phone.length === 10) {
+
+                document.getElementById("phoneMessage")
+                .innerHTML = "Valid Phone Number";
+
+            }
+
+            else {
+
+                document.getElementById("phoneMessage")
+                .innerHTML = "Invalid Phone Number";
+
+            }
+
+        }
+
+        // Event Fee
+
+        function showFee(fee) {
+
+            document.getElementById("feeDisplay")
+            .innerHTML = "Event Fee: ₹" + fee;
+
+        }
+
+        // Confirmation
+        function showConfirmation() {
+            alert("Feedback Submitted Successfully!");
+        }
+
+        // Enlarge Image
+
+        function enlargeImage() {
+
+            document.getElementById("eventImage")
+            .style.width = "500px";
+
+        }
+
+        // Character Count
+
+        function countCharacters() {
+
+            let text =
+                document.getElementById("feedbackText").value;
+
+            document.getElementById("charCount")
+            .innerHTML =
+            "Characters: " + text.length;
+        }
+
+        // Video Ready Message
+
+        function videoReady() {
+
+            document.getElementById("videoMessage")
+            .innerHTML = "Video ready to play";
+
+        }
+
+        // Warn Before Leaving Page
+
+        window.onbeforeunload = function () {
+
+            return "Your form is not fully submitted.";
+
+        }
+
+        // Save Preference
+
+    function savePreference() {
+
+        let selectedEvent =
+            document.getElementById("preferredEvent").value;
+
+        // Save in localStorage
+
+        localStorage.setItem(
+            "preferredEvent",
+            selectedEvent
+        );
+
+        // Save in sessionStorage
+
+        sessionStorage.setItem(
+            "sessionEvent",
+            selectedEvent
+        );
+
+        document.getElementById("savedMessage")
+        .innerHTML =
+        "Preference Saved Successfully!";
+
+    }
+
+    // Load Saved Preference
+
+    window.onload = function () {
+
+        let savedEvent =
+            localStorage.getItem("preferredEvent");
+
+        if(savedEvent) {
+
+            document.getElementById("preferredEvent")
+            .value = savedEvent;
+
+        }
+
+    };
+
+    // Clear Storage
+
+    function clearPreferences() {
+
+        localStorage.clear();
+
+        sessionStorage.clear();
+
+        document.getElementById("savedMessage")
+        .innerHTML =
+        "Preferences Cleared!";
+
+    }
+
+    function findLocation() {
+
+        // Check browser support
+
+        if(navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(
+
+                showPosition,
+                showError,
+
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+
+            );
+
+        }
+
+        else {
+
+            document.getElementById("locationResult")
+            .innerHTML =
+            "Geolocation is not supported.";
+
+        }
+
+    }
+
+    // Success Function
+
+    function showPosition(position) {
+
+        let latitude =
+            position.coords.latitude;
+
+        let longitude =
+            position.coords.longitude;
+
+        document.getElementById("locationResult")
+        .innerHTML =
+
+        "Latitude: " + latitude +
+        "<br>Longitude: " + longitude;
+
+    }
+
+    // Error Handling
+
+    function showError(error) {
+
+        let message = "";
+
+        switch(error.code) {
+
+            case error.PERMISSION_DENIED:
+
+                message =
+                "Location permission denied.";
+                break;
+
+            case error.TIMEOUT:
+
+                message =
+                "Location request timed out.";
+                break;
+
+            default:
+
+                message =
+                "Unable to retrieve location.";
+
+        }
+
+        document.getElementById("locationResult")
+        .innerHTML = message;
+
+    }
+
+    </script>
+</body>
+</html>
